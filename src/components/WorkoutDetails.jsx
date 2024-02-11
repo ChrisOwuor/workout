@@ -1,8 +1,10 @@
-export default function WorkoutDetails(props) {
-  const workout = props;
+export default function WorkoutDetails({ workout }) {
+  const getDate = (d) => {
+    return d ? new Date(d).toDateString() : new Date().toDateString();
+  };
   return (
-    <div className="workout-details">
-      <h4>{workout.title}</h4>
+    <div className="workout-details bg-gray-200 m-4 rounded-lg p-4 w-3/5 mx-auto">
+      <h4>{workout.title[0].toUpperCase() + workout.title.slice(1)}</h4>
       <p>
         <strong>Load (kg): </strong>
         {workout.load}
@@ -11,7 +13,7 @@ export default function WorkoutDetails(props) {
         <strong>Number of reps: </strong>
         {workout.reps}
       </p>
-      <p>{workout.createdAt}</p>
+      <p>{getDate(workout.createdAt)}</p>
     </div>
   );
 }
